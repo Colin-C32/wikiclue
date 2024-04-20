@@ -2,7 +2,17 @@ import { promises as fs } from 'fs';
 import { join } from 'path';
 import { json } from '@sveltejs/kit';
 
-const filePath = '../../assets/word-lists/words/';
+const filePath = join(
+	import.meta.url,
+	'..',
+	'..',
+	'..',
+	'..',
+	'static',
+	'assets',
+	'word-lists',
+	'words'
+);
 const allWords: string[][] = [];
 
 async function loadAllWords(directoryPath: string) {
