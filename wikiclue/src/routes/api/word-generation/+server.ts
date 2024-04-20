@@ -10,7 +10,9 @@ async function loadAllWords(directoryPath: string) {
 		const allFiles = await fs.readdir(directoryPath);
 		for (const fileName of allFiles) {
 			const filePath = join(directoryPath, fileName);
+			console.log("I'm trying to call: ", filePath);
 			const fileContent = await fs.readFile(filePath, 'utf8');
+			console.log('Which should contain', fileContent);
 			const words = fileContent.split(/\r?\n|\r/).filter((word: string) => word.length > 4);
 			allWords.push(words);
 		}
