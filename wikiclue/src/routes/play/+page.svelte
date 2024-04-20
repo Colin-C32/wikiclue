@@ -45,10 +45,8 @@
     async function loadGameplayVariables() {
         const headers = new Headers();
         headers.append("Authorization", token);
-        console.log('Before the GET Call');
         const response = await fetch("/api/rush-variables", { method: "GET", headers: headers });
         const data = await response.json();
-        console.log('After the GET Call');
         wordsToFind[0] = data.wordsToFind[0];
         wordsToFind[1] = data.wordsToFind[1];
         skipsRemaining = data.skipsRemaining;
