@@ -2,17 +2,9 @@ import { promises as fs } from 'fs';
 import { join } from 'path';
 import { json } from '@sveltejs/kit';
 
-const filePath = join(
-	import.meta.url,
-	'..',
-	'..',
-	'..',
-	'..',
-	'static',
-	'assets',
-	'word-lists',
-	'words'
-);
+const currentModuleDir = new URL('.', import.meta.url).pathname;
+const filePath = join(currentModuleDir, 'words');
+
 const allWords: string[][] = [];
 
 async function loadAllWords(directoryPath: string) {
