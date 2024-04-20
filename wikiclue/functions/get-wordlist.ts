@@ -7,10 +7,13 @@ const allWords: string[][] = [];
 
 async function loadAllWords(directoryPath: string) {
 	try {
+		console.log('In the try');
 		const allFiles = await fs.readdir(directoryPath);
 		for (const fileName of allFiles) {
 			const filePath = join(directoryPath, fileName);
+			console.log('filepath: ', filePath);
 			const fileContent = await fs.readFile(filePath, 'utf8');
+			console.log('filecontent: ', fileContent);
 			const words = fileContent.split(/\r?\n|\r/).filter((word: string) => word.length > 4);
 			allWords.push(words);
 		}
