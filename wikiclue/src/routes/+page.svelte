@@ -21,7 +21,7 @@
             console.log('Initial fetch in the main page function');
             const response = await fetch("/api/word-generation");
             const words = await response.json();
-            console.log('It returns: ', words)
+            console.log('It returns: ', words);
             let variables = {
                 streakCount: 0,
                 timeRemaining: timeRemaining,

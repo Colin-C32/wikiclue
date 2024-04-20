@@ -10,9 +10,8 @@ async function loadAllWords(directoryPath: string) {
 		const allFiles = await fs.readdir(directoryPath);
 		for (const fileName of allFiles) {
 			const filePath = join(directoryPath, fileName);
-			console.log("I'm trying to call: ", filePath);
+			return filePath;
 			const fileContent = await fs.readFile(filePath, 'utf8');
-			console.log('Which should contain', fileContent);
 			const words = fileContent.split(/\r?\n|\r/).filter((word: string) => word.length > 4);
 			allWords.push(words);
 		}
@@ -25,7 +24,7 @@ loadAllWords(filePath);
 
 export async function GET() {
 	if (allWords.length === 0) {
-		await loadAllWords(filePath);
+		return await loadAllWords(filePath);
 	}
 	const categoryIndex = Math.floor(Math.random() * allWords.length);
 	const categoryArray = allWords[categoryIndex];
